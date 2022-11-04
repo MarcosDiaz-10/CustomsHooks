@@ -4,8 +4,10 @@ import { useEffect, useMemo, useState } from "react";
 
 
 export const useForm = ( initialForm = {}, formValidations = {}) => {
+
+   const initialFormMemo = useMemo(() => ({ ...initialForm }), [initialForm]);
     
-    const [formState, setFormState] = useState( initialForm );
+    const [formState, setFormState] = useState( initialFormMemo );
     const [formValidation, setFormValidation] = useState({})
 
     useEffect(() => {
